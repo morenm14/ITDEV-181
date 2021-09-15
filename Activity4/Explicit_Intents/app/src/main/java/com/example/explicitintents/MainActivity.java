@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, com.example.explicitintents.Activity3.class);
             getInput.launch(intent);
 
-            //THIS HAS BEEN DEPRECATED!!!!
+            //THIS HAS BEEN DEPRECATED!!!!com
             //Intent intent = new Intent(MainActivity.this, com.example.explicitintents.Activity3.class);
             // startActivityForResult(intent,ACTIVITY3);
 
