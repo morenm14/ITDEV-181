@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/listFrag"
+        android:name="com.example.fragmentsrecyclerviewdemo.listFrag"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:paddingLeft="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_list" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/listFrag"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/detailFrag"
+            android:name="com.example.fragmentsrecyclerviewdemo.detailFrag"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            tools:layout="@layout/fragment_detail" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/addPersonFrag"
+            android:name="com.example.fragmentsrecyclerviewdemo.addPersonFrag"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            tools:layout="@layout/fragment_add_person" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
