@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     String name = "", phone = "", web = "", face = "", map = "";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         ActivityResultLauncher<Intent> getInfo = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK){
+
                 contactLayout.setVisibility(View.VISIBLE);
 
                 face = result.getData().getStringExtra("face");
