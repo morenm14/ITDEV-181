@@ -27,7 +27,6 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView name;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.cardName);

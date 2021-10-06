@@ -30,7 +30,7 @@ public class DetailFrag extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         description = view.findViewById(R.id.description);
-        description.setText(R.string.select_an_item);
+        description.setText("");
         getParentFragmentManager().setFragmentResultListener("requestKey", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
