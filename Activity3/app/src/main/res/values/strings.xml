@@ -10,5 +10,6 @@
     <string name="male">Male</string>
     <string name="saCitizen">SA Citizen</string>
     <string name="permanent">Permanent Resident</string>
+    <string name="textview">TextView</string>
 
 </resources>

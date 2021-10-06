@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
                 sNationality = getString(R.string.permanent);
             }
 
-            String text = getString(R.string.dob) + dob + getString(R.string.newLine) +
-                    getString(R.string.gender) + sGender + getString(R.string.newLine) +
-                    getString(R.string.nationality) + sNationality + getString(R.string.newLine);
+            String text = getString(R.string.dob)+ " " + dob + getString(R.string.newLine) +
+                    getString(R.string.gender) + " " + sGender + getString(R.string.newLine) +
+                    getString(R.string.nationality) + " " + sNationality + getString(R.string.newLine);
 
             textViewID.setText(text);
             textViewID.setVisibility(View.VISIBLE);
