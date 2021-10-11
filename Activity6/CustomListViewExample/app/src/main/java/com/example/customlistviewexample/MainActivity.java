@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         products.add(new Product(
                 "Acer Aspire 7",
                 "Revolutionary convertible computers that feature powerful innovation and forward-thinking design.",
-                "Laptop",
+                "Screen",
                 12500.99,
                 false));
 
