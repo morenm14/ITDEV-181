@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         showToastBtn.setOnClickListener(view -> {
 
             Toast.makeText(this, "This is a toast", Toast.LENGTH_SHORT).show();
-            showMyToast("This is my toast message");
+            showMyToast("This is my awesome toast message");
         });
     }
 
