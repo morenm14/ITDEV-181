@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     EditText inputName;
     Button submitBtn;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         submitBtn = findViewById(R.id.submitBtn);
 
         SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
-        String user = sharedPreferences.getString("user", null);
+        String user = sharedPreferences.getString("user", "");
         welcomeMsg.setText("Welcome to my app " + user + "!");
 
         submitBtn.setOnClickListener(view -> {
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPrefs.edit();
                 editor.putString("user", name);
                 editor.apply();
-
                 inputName.setText(null);
             }else {
                 Toast.makeText(this, "Enter a name", Toast.LENGTH_SHORT).show();
