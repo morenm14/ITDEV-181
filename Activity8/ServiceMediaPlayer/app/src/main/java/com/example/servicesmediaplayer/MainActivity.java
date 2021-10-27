@@ -9,11 +9,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    String audioLink = "https://dl.freesound.org/data/previews/593/593786_2282212-lq.mp3";
+    String audioLink = "https://freesound.org/data/previews/593/593786_2282212-lq.mp3";
     static ImageView imageControl;
-    boolean isPlaying = false;
+    static boolean isPlaying = false;
     Intent serviceIntent;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,34 +23,31 @@ public class MainActivity extends AppCompatActivity {
         serviceIntent = new Intent(this, MyPlayService.class);
 
         imageControl.setOnClickListener(view -> {
-
             if (!isPlaying){
                 playMusic();
-                imageControl.setImageResource(R.drawable.play_img);
+                imageControl.setImageResource(R.drawable.stop_img);
                 isPlaying = true;
             }else {
                 stopMusic();
-                imageControl.setImageResource(R.drawable.stop_img);
+                imageControl.setImageResource(R.drawable.play_img);
                 isPlaying =false;
             }
-
         });
-
     }
 
-    private void stopMusic() {
+    private void playMusic() {
+        serviceIntent.putExtra("AudioLink", audioLink);
         try {
-            stopService(serviceIntent);
+            startService(serviceIntent);
         }catch (SecurityException e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void playMusic() {
-        serviceIntent.setAction("com.example.servicesmediaplayer");
-        serviceIntent.putExtra("AudioLink", audioLink);
+
+    private void stopMusic() {
         try {
-            startService(serviceIntent);
+            stopService(serviceIntent);
         }catch (SecurityException e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }

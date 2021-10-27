@@ -11,34 +11,39 @@ public class MyPlayService extends Service implements MediaPlayer.OnPreparedList
     MediaPlayer.OnErrorListener, MediaPlayer.OnSeekCompleteListener, MediaPlayer.OnInfoListener, MediaPlayer.OnBufferingUpdateListener{
 
     String link;
-    MediaPlayer mediaPlayer = null;
+    MediaPlayer mediaPlayer;
 
     public MyPlayService() {
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public void onCreate() {
+        super.onCreate();
+
         mediaPlayer = new MediaPlayer();
+
         mediaPlayer.setOnPreparedListener(this);
         mediaPlayer.setOnCompletionListener(this);
         mediaPlayer.setOnErrorListener(this);
         mediaPlayer.setOnSeekCompleteListener(this);
         mediaPlayer.setOnInfoListener(this);
         mediaPlayer.setOnBufferingUpdateListener(this);
+    }
 
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
         link = intent.getStringExtra("AudioLink");
         mediaPlayer.reset();
         if (!mediaPlayer.isPlaying()){
             try{
                 mediaPlayer.setDataSource(link);
                 mediaPlayer.prepareAsync();
-                mediaPlayer.start();
 
             }catch (Exception e){
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
-        return super.onStartCommand(intent, flags, startId);
+        return START_STICKY;
     }
 
     @Override
@@ -47,11 +52,7 @@ public class MyPlayService extends Service implements MediaPlayer.OnPreparedList
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
 
-    }
 
     @Override
     public void onPrepared(MediaPlayer mediaPlayer) {
@@ -81,8 +82,9 @@ public class MyPlayService extends Service implements MediaPlayer.OnPreparedList
         if (mediaPlayer.isPlaying()){
             mediaPlayer.stop();
         }
-        MainActivity.imageControl.setImageResource(R.drawable.play_img);
         stopSelf();
+        MainActivity.isPlaying = false;
+        MainActivity.imageControl.setImageResource(R.drawable.play_img);
     }
 
     @Override
