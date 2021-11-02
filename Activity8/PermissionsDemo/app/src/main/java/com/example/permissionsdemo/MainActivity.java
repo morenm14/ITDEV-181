@@ -52,28 +52,28 @@ public class MainActivity extends AppCompatActivity{
             //if the user selects deny, it would ask again
             }else if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
 
-                    //show the user when deny is clicked
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-                    alertDialog.setMessage("Please allow")
-                            .setTitle("Permission Required");
-                    alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
-                        }
-                    });
-                    alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(MainActivity.this, "No Permission Granted", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                //show the user when deny is clicked
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+                alertDialog.setMessage("Please allow")
+                        .setTitle("Permission Required");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+                    }
+                });
+                alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(MainActivity.this, "No Permission Granted", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-                    alertDialog.show();
+                alertDialog.show();
 
-                }else{
-                    Toast.makeText(MainActivity.this, "No Permission Granted, We won't show this again.", Toast.LENGTH_SHORT).show();
-                }
+            }else{
+                Toast.makeText(MainActivity.this, "No Permission Granted, We won't show this again.", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
