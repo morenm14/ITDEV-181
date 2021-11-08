@@ -31,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
         String result = getIntent().getStringExtra("user");
         welcome.setText("Welcome " + result + "!!!");
 
-
-
+        //log out
         logoutBtn.setOnClickListener(view -> {
 
             loadingView.setVisibility(View.VISIBLE);
@@ -48,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
                     loadingView.setVisibility(View.INVISIBLE);
                     logoutView.setVisibility(View.VISIBLE);
                     MainActivity.this.finish();
-
                 }
 
                 @Override
