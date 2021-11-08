@@ -74,6 +74,7 @@ public class Register extends AppCompatActivity {
                             Intent registered = new Intent(Register.this, MainActivity.class);
                             registered.putExtra("user", user);
                             startActivity(registered);
+                            Register.this.finish();
                         }
 
                         @Override
