@@ -48,6 +48,7 @@ public class Login extends AppCompatActivity {
                     Backendless.Data.of(BackendlessUser.class).findById(objectId, new AsyncCallback<BackendlessUser>() {
                         @Override
                         public void handleResponse(BackendlessUser response) {
+                            AppInitializer.user = response;
                             Intent loggedInUser = new Intent(Login.this, MainActivity.class);
                             loggedInUser.putExtra("user", response.getProperty("name").toString());
                             startActivity(loggedInUser);
@@ -87,6 +88,8 @@ public class Login extends AppCompatActivity {
                 Backendless.UserService.login(emailValue, passwordValue, new AsyncCallback<BackendlessUser>() {
                     @Override
                     public void handleResponse(BackendlessUser response) {
+
+                        AppInitializer.user = response;
                         String user = response.getProperty("name").toString();
                         Intent loginIntent = new Intent(Login.this, MainActivity.class);
                         loginIntent.putExtra("user", user);

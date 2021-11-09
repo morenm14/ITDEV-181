@@ -16,7 +16,7 @@ import com.backendless.exceptions.BackendlessFault;
 public class MainActivity extends AppCompatActivity {
 
     TextView welcome;
-    Button logoutBtn;
+    Button logoutBtn, newContactBtn, myContactsBtn;
     View loadingView, logoutView;
 
     @Override
@@ -28,8 +28,23 @@ public class MainActivity extends AppCompatActivity {
         loadingView = findViewById(R.id.loadingView);
         logoutView =findViewById(R.id.logoutView);
         welcome = findViewById(R.id.result);
+        newContactBtn = findViewById(R.id.createNewContactBtn);
+        myContactsBtn = findViewById(R.id.myContactsBtn);
+
         String result = getIntent().getStringExtra("user");
         welcome.setText("Welcome " + result + "!!!");
+
+
+        newContactBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, CreateContact.class);
+            startActivity(intent);
+        });
+
+        myContactsBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, ContactList.class);
+            startActivity(intent);
+
+        });
 
         //log out
         logoutBtn.setOnClickListener(view -> {
@@ -40,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
             Backendless.UserService.logout(new AsyncCallback<Void>() {
                 @Override
                 public void handleResponse(Void response) {
-
                     Toast.makeText(MainActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this, Login.class));
                     welcome.setText("logged out");

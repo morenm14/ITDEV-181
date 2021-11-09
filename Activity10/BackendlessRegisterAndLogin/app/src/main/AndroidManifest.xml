@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BackendlessRegisterAndLogin">
         <activity
+            android:name=".ContactList"
+            android:exported="false" />
+        <activity
+            android:name=".CreateContact"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
