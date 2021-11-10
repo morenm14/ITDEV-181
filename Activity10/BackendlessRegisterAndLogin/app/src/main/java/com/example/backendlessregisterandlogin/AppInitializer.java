@@ -14,8 +14,6 @@ public class AppInitializer extends Application {
     public static BackendlessUser user;
     public static List<Contact> contacts;
 
-
-
     @Override
     public void onCreate() {
         super.onCreate();
