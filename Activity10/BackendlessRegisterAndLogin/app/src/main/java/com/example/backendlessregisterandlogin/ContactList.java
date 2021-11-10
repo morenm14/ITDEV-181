@@ -32,7 +32,8 @@ public class ContactList extends AppCompatActivity {
         contactsView = findViewById(R.id.contactsView);
         loadingText = findViewById(R.id.loadingText);
 
-        String whereClause = "userEmail = '" + AppInitializer.user.getEmail() + "'";
+        String whereClause = String.format("userEmail = '%s'", AppInitializer.user.getEmail());
+        //String whereClause = "userEmail = '" + AppInitializer.user.getEmail() + "'";
         DataQueryBuilder query = DataQueryBuilder.create();
         query.setWhereClause(whereClause);
         query.setGroupBy("name");
