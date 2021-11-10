@@ -48,9 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
         //log out
         logoutBtn.setOnClickListener(view -> {
-
             loadingView.setVisibility(View.VISIBLE);
-            logoutView.setVisibility(View.INVISIBLE);
+            logoutView.setVisibility(View.GONE);
 
             Backendless.UserService.logout(new AsyncCallback<Void>() {
                 @Override
@@ -58,14 +57,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Logged out", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this, Login.class));
                     welcome.setText("logged out");
-                    loadingView.setVisibility(View.INVISIBLE);
-                    logoutView.setVisibility(View.VISIBLE);
                     MainActivity.this.finish();
                 }
 
                 @Override
                 public void handleFault(BackendlessFault fault) {
                     Toast.makeText(MainActivity.this, fault.getMessage(), Toast.LENGTH_SHORT).show();
+                    loadingView.setVisibility(View.GONE);
 
                 }
             });

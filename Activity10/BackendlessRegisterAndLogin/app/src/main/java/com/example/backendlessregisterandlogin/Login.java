@@ -43,17 +43,21 @@ public class Login extends AppCompatActivity {
         Backendless.UserService.isValidLogin(new AsyncCallback<Boolean>() {
             @Override
             public void handleResponse(Boolean response) {
+
                 if (response){
                     String objectId = UserIdStorageFactory.instance().getStorage().get();
+
                     Backendless.Data.of(BackendlessUser.class).findById(objectId, new AsyncCallback<BackendlessUser>() {
                         @Override
                         public void handleResponse(BackendlessUser response) {
+                            showProgress(true);
                             AppInitializer.user = response;
-                            Intent loggedInUser = new Intent(Login.this, MainActivity.class);
+                            Intent loggedInUser = new Intent(getApplicationContext(), MainActivity.class);
                             loggedInUser.putExtra("user", response.getProperty("name").toString());
                             startActivity(loggedInUser);
                             showProgress(false);
                         }
+
 
                         @Override
                         public void handleFault(BackendlessFault fault) {
