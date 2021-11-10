@@ -11,6 +11,7 @@ public class AppInitializer extends Application {
 
     public static final String APPLICATION_ID = "0639753A-28F1-79EC-FF17-071231F2CE00";
     public static final String API_KEY = "88A97712-599A-4A7A-A194-6F11BF10FC87";
+
     public static BackendlessUser user;
     public static List<Contact> contacts;
 

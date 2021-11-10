@@ -71,7 +71,7 @@ public class Register extends AppCompatActivity {
                             Toast.makeText(Register.this,  response.getProperty("name") + " has been registered!", Toast.LENGTH_LONG).show();
 
                             String user = (String) response.getProperty("name");
-                            Intent registered = new Intent(Register.this, MainActivity.class);
+                            Intent registered = new Intent(Register.this, Login.class);
                             registered.putExtra("user", user);
                             startActivity(registered);
                             Register.this.finish();
