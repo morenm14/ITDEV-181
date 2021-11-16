@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".AddNote">
 
-    <Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="@color/teal_200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/back" />
 
     <EditText
         android:id="@+id/newNoteTitle"
@@ -27,6 +28,7 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:paddingLeft="10dp"
+        android:textColor="#535252"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolBar" />
@@ -38,11 +40,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:background="null"
+        android:background="#FFFFFF"
         android:ems="10"
         android:gravity="start|top"
         android:hint="details"
-        android:hintTextColor="#757575"
         android:inputType="textMultiLine"
         android:minHeight="48dp"
         android:padding="10dp"
