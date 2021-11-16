@@ -2,25 +2,27 @@ package com.example.mynotes;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+public class AddNote extends AppCompatActivity {
     Toolbar toolbar;
-    RecyclerView recyclerView;
+    EditText newNoteTitle, newNoteDetails;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-       // set toolbar
+        setContentView(R.layout.activity_add_note);
+
+        // set toolbar
         toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
 
-        //connect recycler view
-        recyclerView = findViewById(R.id.noteList);
-
+        //set resources
+        newNoteTitle = findViewById(R.id.newNoteTitle);
+        newNoteDetails = findViewById(R.id.newNoteDetails);
 
     }
 }
