@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -83,7 +84,8 @@ public class AddNote extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.delete:
                 Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show();
-                onBackPressed();
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
                 break;
 
             case R.id.save:
@@ -103,7 +105,9 @@ public class AddNote extends AppCompatActivity {
                     newNoteTitle.setText(null);
                     newNoteDetails.setText(null);
 
-                    onBackPressed();
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+
                 }
 
                 Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
@@ -111,10 +115,5 @@ public class AddNote extends AppCompatActivity {
         }
         
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 }
