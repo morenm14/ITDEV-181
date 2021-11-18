@@ -1,13 +1,12 @@
 package com.example.mynotes;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,12 +15,15 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Objects;
 
 public class AddNote extends AppCompatActivity {
     Toolbar toolbar;
     EditText newNoteTitle, newNoteDetails;
-    Calendar date;
+    Date date, time;
     String noteDate, timeCreated;
 
     @Override
@@ -34,20 +36,18 @@ public class AddNote extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
 
-        getSupportActionBar().setTitle("New Note");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("New Note");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //get date
-        date = Calendar.getInstance();
-        noteDate = String.format("%s/%s/%s",
-                date.get(Calendar.MONTH) + 1,
-                date.get(Calendar.DAY_OF_MONTH),
-                date.get(Calendar.YEAR));
+        date = Calendar.getInstance().getTime();
+        noteDate = DateFormat.getDateInstance().format(date);
 
         //set time created
-        timeCreated = String.format("%s:%s",
-                date.get(Calendar.HOUR),
-                date.get(Calendar.MINUTE));
+        time = Calendar.getInstance().getTime();
+        timeCreated = DateFormat.getTimeInstance().format(time);
+
+
 
         //set resources
         newNoteTitle = findViewById(R.id.newNoteTitle);
@@ -61,7 +61,7 @@ public class AddNote extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length()!= 0){
-                    getSupportActionBar().setTitle(charSequence);
+                    Objects.requireNonNull(getSupportActionBar()).setTitle(charSequence);
                 }
             }
 
@@ -78,6 +78,7 @@ public class AddNote extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){

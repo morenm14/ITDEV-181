@@ -23,15 +23,17 @@ public class NoteDetails extends AppCompatActivity {
 
         Intent intent = getIntent();
         long id = intent.getLongExtra("ID", 0);
-        noteDetail.setText(intent.getStringExtra("content"));
+
+        NotesDB db = new NotesDB(this);
+        Note note = db.getNote(id);
+        noteDetail.setText(note.getContent());
 
         Toast.makeText(NoteDetails.this, "ID: " + id, Toast.LENGTH_SHORT).show();
-
 
         // set toolbar
         toolbar = findViewById(R.id.detailToolBar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle(intent.getStringExtra("title"));
+        toolbar.setTitle(note.getTitle());
         toolbar.setTitleTextColor(Color.WHITE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

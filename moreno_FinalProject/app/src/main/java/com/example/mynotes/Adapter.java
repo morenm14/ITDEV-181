@@ -64,8 +64,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(view.getContext(), NoteDetails.class);
                 intent.putExtra("ID", notes.get(getBindingAdapterPosition()).getID());
-                intent.putExtra("title",notes.get(getBindingAdapterPosition()).getTitle());
-                intent.putExtra("content", notes.get(getBindingAdapterPosition()).getContent());
+//                intent.putExtra("title",notes.get(getBindingAdapterPosition()).getTitle());
+//                intent.putExtra("content", notes.get(getBindingAdapterPosition()).getContent());
 
                 view.getContext().startActivity(intent);
             });
