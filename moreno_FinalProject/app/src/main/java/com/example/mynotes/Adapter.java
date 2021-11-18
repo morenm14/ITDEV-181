@@ -42,6 +42,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.title.setText(title);
         holder.date.setText(date);
         holder.time.setText(time);
+        holder.noteID.setText("ID: " + String.valueOf(id));
     }
 
     @Override
@@ -50,7 +51,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView title, date, time;
+        TextView title, date, time, noteID;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,12 +59,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             title = itemView.findViewById(R.id.noteTitle);
             date = itemView.findViewById(R.id.noteDate);
             time = itemView.findViewById(R.id.noteTime);
+            noteID = itemView.findViewById(R.id.noteID);
 
             itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(view.getContext(), NoteDetails.class);
-                intent.putExtra("ID", notes.get(getAdapterPosition()).getID());
-//                intent.putExtra("title",notes.get(getBindingAdapterPosition()).getTitle());
-//                intent.putExtra("content", notes.get(getBindingAdapterPosition()).getContent());
+                intent.putExtra("ID", notes.get(getBindingAdapterPosition()).getID());
+                intent.putExtra("title",notes.get(getBindingAdapterPosition()).getTitle());
+                intent.putExtra("content", notes.get(getBindingAdapterPosition()).getContent());
 
                 view.getContext().startActivity(intent);
             });

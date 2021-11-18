@@ -23,6 +23,7 @@ public class NoteDetails extends AppCompatActivity {
 
         Intent intent = getIntent();
         long id = intent.getLongExtra("ID", 0);
+        noteDetail.setText(intent.getStringExtra("content"));
 
         Toast.makeText(NoteDetails.this, "ID: " + id, Toast.LENGTH_SHORT).show();
 
@@ -35,7 +36,6 @@ public class NoteDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        noteDetail.setText(intent.getStringExtra("content"));
     }
 
     @Override

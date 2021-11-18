@@ -45,10 +45,9 @@ public class AddNote extends AppCompatActivity {
                 date.get(Calendar.YEAR));
 
         //set time created
-        timeCreated = String.format("%s:%s %s",
+        timeCreated = String.format("%s:%s",
                 date.get(Calendar.HOUR),
-                date.get(Calendar.MINUTE),
-                date.get(Calendar.AM));
+                date.get(Calendar.MINUTE));
 
         //set resources
         newNoteTitle = findViewById(R.id.newNoteTitle);

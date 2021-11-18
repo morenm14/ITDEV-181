@@ -31,9 +31,9 @@ public class NotesDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + DATABASE_TABLE + "(" + KEY_ID + " INT PRIMARY KEY,"+
-                KEY_TITLE + " TEXT," +
-                KEY_CONTENT + " TEXT," +
+        String query = "CREATE TABLE " + DATABASE_TABLE + "(" + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                KEY_TITLE + " TEXT NOT NULL," +
+                KEY_CONTENT + " TEXT NOT NULL," +
                 KEY_DATE + " TEXT," +
                 KEY_TIME + " TEXT" + ")";
 
@@ -94,8 +94,8 @@ public class NotesDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Note> notes = new ArrayList<>();
 
-        String query = String.format("SELECT * FROM %s", DATABASE_TABLE);
-        Cursor cursor = db.rawQuery(query,null);
+        String[] cols = new String[]{KEY_ID, KEY_TITLE,KEY_CONTENT,KEY_DATE,KEY_TIME};
+        Cursor cursor = db.query(DATABASE_TABLE, cols,null,null,null, null, null);
 
         if (cursor.moveToFirst()){
 

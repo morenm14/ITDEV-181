@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity{
         NotesDB db = new NotesDB(this);
         notes = db.getNotes();
 
-        Log.d("Notes: ", notes.get(7).getTitle() + notes.get(7).getID());
 
         //connect recycler view
         recyclerView = findViewById(R.id.noteList);

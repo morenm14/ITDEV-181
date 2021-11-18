@@ -22,6 +22,7 @@
                 android:id="@+id/constraintLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_marginEnd="350dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +33,7 @@
                     android:id="@+id/imageView2"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -57,6 +58,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="30dp"
                     android:text="This is the title"
@@ -72,30 +74,38 @@
 
                 <TextView
                     android:id="@+id/noteDate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_width="75dp"
+                    android:layout_height="19dp"
+                    android:layout_marginTop="8dp"
                     android:text="11/16/2021"
                     android:textColor="#7A7A7A"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/noteTime"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/noteTitle"
                     app:layout_constraintTop_toBottomOf="@+id/noteTitle" />
 
                 <TextView
                     android:id="@+id/noteTime"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="14dp"
                     android:text="12:00 PM"
                     android:textColor="#7A7A7A"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/noteDate"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/noteDate"
                     app:layout_constraintTop_toTopOf="@+id/noteDate" />
+
+                <TextView
+                    android:id="@+id/noteID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="19dp"
+                    android:layout_marginStart="91dp"
+                    android:layout_marginTop="8dp"
+                    android:text="ID"
+                    android:textColor="#7A7A7A"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/noteTitle"
+                    app:layout_constraintStart_toEndOf="@+id/noteTime"
+                    app:layout_constraintTop_toBottomOf="@+id/noteTitle" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
