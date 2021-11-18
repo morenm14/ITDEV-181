@@ -24,7 +24,6 @@ public class AddNote extends AppCompatActivity {
     Calendar date;
     String noteDate, timeCreated;
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +35,7 @@ public class AddNote extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
 
         getSupportActionBar().setTitle("New Note");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //get date
         date = Calendar.getInstance();

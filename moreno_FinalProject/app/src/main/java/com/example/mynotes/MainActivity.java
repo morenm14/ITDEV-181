@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     Toolbar toolbar;
     RecyclerView recyclerView;
     Adapter adapter;
@@ -34,11 +35,14 @@ public class MainActivity extends AppCompatActivity {
         NotesDB db = new NotesDB(this);
         notes = db.getNotes();
 
+        Log.d("Notes: ", notes.get(7).getTitle() + notes.get(7).getID());
+
         //connect recycler view
         recyclerView = findViewById(R.id.noteList);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        adapter = new Adapter(MainActivity.this, notes );
+        adapter = new Adapter(MainActivity.this, notes);
         recyclerView.setAdapter(adapter);
+
     }
 
     @Override
@@ -55,4 +59,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

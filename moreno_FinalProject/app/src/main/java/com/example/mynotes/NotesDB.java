@@ -31,8 +31,12 @@ public class NotesDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = String.format("CREATE TABLE %s ( %s INT PRIMARY KEY, %s TEXT, %s TEXT, %s TEXT, %s TEXT)",
-                DATABASE_TABLE, KEY_ID, KEY_TITLE, KEY_CONTENT, KEY_DATE, KEY_TIME);
+        String query = "CREATE TABLE " + DATABASE_TABLE + "(" + KEY_ID + " INT PRIMARY KEY,"+
+                KEY_TITLE + " TEXT," +
+                KEY_CONTENT + " TEXT," +
+                KEY_DATE + " TEXT," +
+                KEY_TIME + " TEXT" + ")";
+
         db.execSQL(query);
     }
 
@@ -73,12 +77,16 @@ public class NotesDB extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
 
-       return new Note(
+        Note note = new Note(
                 cursor.getLong(0),
                 cursor.getString(1),
                 cursor.getString(2),
                 cursor.getString(3),
                 cursor.getString(4));
+
+        cursor.close();
+
+        return note;
     }
 
     //retrieve all notes
@@ -103,6 +111,8 @@ public class NotesDB extends SQLiteOpenHelper {
 
             }while (cursor.moveToNext());
         }
+
+        cursor.close();
 
         return notes;
     }
