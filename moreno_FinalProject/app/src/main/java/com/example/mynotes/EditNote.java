@@ -117,6 +117,7 @@ public class EditNote extends AppCompatActivity {
 
                     Intent intent = new Intent(EditNote.this, MainActivity.class);
                     startActivity(intent);
+                    this.finish();
                 }
                 break;
         }
