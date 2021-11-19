@@ -80,6 +80,7 @@ public class AddNote extends AppCompatActivity {
                 Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(this, MainActivity.class);
                 startActivity(i);
+                this.finish();
                 break;
 
             case R.id.save:
@@ -98,6 +99,7 @@ public class AddNote extends AppCompatActivity {
 
                     newNoteTitle.setText(null);
                     newNoteDetails.setText(null);
+
 
                     Intent intent = new Intent(this, MainActivity.class);
                     startActivity(intent);

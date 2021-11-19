@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
@@ -64,6 +65,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 Intent intent = new Intent(view.getContext(), NoteDetails.class);
                 intent.putExtra("ID", notes.get(getBindingAdapterPosition()).getID());
                 view.getContext().startActivity(intent);
+
             });
         }
     }

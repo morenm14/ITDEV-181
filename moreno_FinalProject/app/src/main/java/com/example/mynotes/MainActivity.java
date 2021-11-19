@@ -30,13 +30,11 @@ public class MainActivity extends AppCompatActivity{
         NotesDB db = new NotesDB(this);
         notes = db.getNotes();
 
-
         //connect recycler view
         recyclerView = findViewById(R.id.noteList);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         adapter = new Adapter(MainActivity.this, notes);
         recyclerView.setAdapter(adapter);
-
     }
 
     @Override
@@ -53,6 +51,4 @@ public class MainActivity extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }

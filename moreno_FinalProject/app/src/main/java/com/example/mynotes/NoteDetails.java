@@ -15,6 +15,7 @@ import android.widget.Toast;
 public class NoteDetails extends AppCompatActivity {
     TextView noteDetail;
     Toolbar toolbar;
+    Adapter adapter;
     private NotesDB db;
     private long id;
 
@@ -59,6 +60,7 @@ public class NoteDetails extends AppCompatActivity {
         if (item.getItemId() == R.id.deleteNoteBtn){
             db.deleteNote(id);
             startActivity(new Intent(NoteDetails.this, MainActivity.class));
+            this.finish();
             Toast.makeText(NoteDetails.this, "Deleted", Toast.LENGTH_SHORT).show();
 
         }

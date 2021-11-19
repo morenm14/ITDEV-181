@@ -96,6 +96,7 @@ public class EditNote extends AppCompatActivity {
                 Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(this, MainActivity.class);
                 startActivity(i);
+                this.finish();
                 break;
 
             case R.id.save:
@@ -105,8 +106,8 @@ public class EditNote extends AppCompatActivity {
                 }else{
                     note.setTitle(newNoteTitle.getText().toString());
                     note.setContent(newNoteDetails.getText().toString());
-                    note.setDate(noteDate);
-                    note.setTime(timeCreated);
+                    //note.setDate(noteDate);
+                   //s note.setTime(timeCreated);
 
                     db.editNote(note);
 
