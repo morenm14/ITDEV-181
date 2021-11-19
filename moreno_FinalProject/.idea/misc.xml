@@ -6,6 +6,7 @@
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.12291666666666666" />
         <entry key="app/src/main/res/drawable/note_img.xml" value="0.2984375" />
         <entry key="app/src/main/res/layout/activity_add_note.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_edit_note.xml" value="0.22407407407407406" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_note_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/content_note_details.xml" value="0.28229166666666666" />

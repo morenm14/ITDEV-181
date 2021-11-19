@@ -20,23 +20,37 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-public class AddNote extends AppCompatActivity {
+public class EditNote extends AppCompatActivity {
+
     Toolbar toolbar;
     EditText newNoteTitle, newNoteDetails;
     Date date, time;
+    Note note;
     String noteDate, timeCreated;
+    private NotesDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_note);
+        setContentView(R.layout.activity_edit_note);
+
+        //set resources
+        newNoteTitle = findViewById(R.id.newNoteTitle);
+        newNoteDetails = findViewById(R.id.newNoteDetails);
+
+        Intent intent = getIntent();
+        db = new NotesDB(this);
+        note = db.getNote(intent.getLongExtra("id",0));
+
+        newNoteTitle.setText(note.getTitle());
+        newNoteDetails.setText(note.getContent());
 
         // set toolbar
         toolbar = findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("New Note");
+        Objects.requireNonNull(getSupportActionBar()).setTitle(note.getTitle());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //get date
@@ -47,9 +61,7 @@ public class AddNote extends AppCompatActivity {
         time = Calendar.getInstance().getTime();
         timeCreated = DateFormat.getTimeInstance().format(time);
 
-        //set resources
-        newNoteTitle = findViewById(R.id.newNoteTitle);
-        newNoteDetails = findViewById(R.id.newNoteDetails);
+
 
         newNoteTitle.addTextChangedListener(new TextWatcher() {
             @Override
@@ -91,27 +103,24 @@ public class AddNote extends AppCompatActivity {
                     Toast.makeText(this, "Please enter all fields", Toast.LENGTH_SHORT).show();
                     break;
                 }else{
-                    Note note = new Note();
                     note.setTitle(newNoteTitle.getText().toString());
                     note.setContent(newNoteDetails.getText().toString());
                     note.setDate(noteDate);
                     note.setTime(timeCreated);
 
-                    NotesDB notesDB = new NotesDB(AddNote.this);
-                    notesDB.addNote(note);
+                    db.editNote(note);
 
                     newNoteTitle.setText(null);
                     newNoteDetails.setText(null);
 
-                    Intent intent = new Intent(this, MainActivity.class);
+                    Toast.makeText(this, "Note Updated", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(EditNote.this, MainActivity.class);
                     startActivity(intent);
-
                 }
-
-                Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
                 break;
         }
-        
+
         return super.onOptionsItemSelected(item);
     }
 }

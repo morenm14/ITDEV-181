@@ -1,22 +1,20 @@
 package com.example.mynotes;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
-    private LayoutInflater inflater;
-    private List<Note> notes;
+    private final LayoutInflater inflater;
+    private final List<Note> notes;
 
     public Adapter(Context context, List<Note> notes){
         this.inflater = LayoutInflater.from(context);
@@ -32,6 +30,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
         String title = notes.get(position).getTitle();
@@ -42,7 +41,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.title.setText(title);
         holder.date.setText(date);
         holder.time.setText(time);
-        holder.noteID.setText("ID: " + String.valueOf(id));
+        holder.noteID.setText("ID: " + id);
     }
 
     @Override
@@ -64,9 +63,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(view.getContext(), NoteDetails.class);
                 intent.putExtra("ID", notes.get(getBindingAdapterPosition()).getID());
-//                intent.putExtra("title",notes.get(getBindingAdapterPosition()).getTitle());
-//                intent.putExtra("content", notes.get(getBindingAdapterPosition()).getContent());
-
                 view.getContext().startActivity(intent);
             });
         }
